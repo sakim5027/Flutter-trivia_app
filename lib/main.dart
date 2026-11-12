@@ -185,10 +185,20 @@ class _TriviaShowdownScreenState extends State<TriviaShowdownScreen> {
             ? const Center(child: CircularProgressIndicator())
             : _error.isNotEmpty
             ? Center(
-                child: Text(
-                  _error,
-                  style: const TextStyle(color: Colors.red, fontSize: 16),
-                  textAlign: TextAlign.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      _error,
+                      style: const TextStyle(color: Colors.red, fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _restart,
+                      child: const Text('Retry'),
+                    ),
+                  ],
                 ),
               )
             : _currentIndex >= _questions.length
