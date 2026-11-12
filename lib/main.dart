@@ -249,7 +249,7 @@ class _TriviaShowdownScreenState extends State<TriviaShowdownScreen> {
                         label: Text(
                           _isSyncing
                               ? 'Simulating sync...'
-                              : 'Simulate Score Sync',
+                              : 'Simulate Score Sync to Leaderboard',
                         ),
                       )
                     else
