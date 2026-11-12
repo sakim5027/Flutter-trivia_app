@@ -159,8 +159,11 @@ class _TriviaShowdownScreenState extends State<TriviaShowdownScreen> {
 
   void _restart() {
     _roundId++;
+
     setState(() {
       _isLoading = true;
+      _error = ''; // Clear the previous error
+      _questions = [];
       _currentIndex = 0;
       _score = 0;
       _answered = false;
@@ -168,6 +171,7 @@ class _TriviaShowdownScreenState extends State<TriviaShowdownScreen> {
       _isSynced = false;
       _isSyncing = false;
     });
+
     _loadTriviaData();
   }
 
