@@ -141,18 +141,33 @@ class _TriviaShowdownScreenState extends State<TriviaShowdownScreen> {
   Future<void> _syncScoreToCloud() async {
     if (_isSyncing || _isSynced) return;
     final roundId = _roundId;
+
+    // Create a simulated submission payload.
+    final payload = {
+      'score': _score,
+      'totalQuestions': _questions.length,
+      'roundId': roundId,
+    };
+
     setState(() {
       _isSyncing = true;
     });
+
+    // Display the payload in the debug console.
+    debugPrint('Simulated submission payload: ${jsonEncode(payload)}');
+
+    // Simulate waiting for a server.
     await Future.delayed(const Duration(seconds: 1));
+
     if (!mounted || roundId != _roundId) return;
+
     setState(() {
       _isSyncing = false;
       _isSynced = true;
     });
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Simulated sync complete; no backend request was sent.'),
+        content: Text('Simulation complete. No real backend request was sent.'),
       ),
     );
   }
